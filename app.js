@@ -16,7 +16,7 @@ app.get('/api/:date?', (req, res) => {
   let date_string = req.params.date;
   let date;
 
-  if (date_string.length === 0) {
+  if (date_string === undefined) {
     let date = new Date();
     res.json({
       unix: date.getTime(),
