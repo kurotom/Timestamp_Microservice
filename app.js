@@ -10,9 +10,10 @@ app.get('/', (req, res) => {
 
 app.get('/api/', (req, res) => {
   let date = new Date();
+
   res.json({
-    "unix": date.getTime(),
-    "utc": date.toUTCString()
+    unix: date.getTime(),
+    utc: date.toUTCString()
   });
 });
 
@@ -25,11 +26,11 @@ app.get('/api/:time', (req, res) => {
     console.log(query, date);
     if (date.toString()  !== 'Invalid Date') {
       res.json({
-        "unix": date.getTime(),
-        "utc": date.toUTCString()
+        unix: date.getTime(),
+        utc: date.toUTCString()
       });
     } else {
-      res.json({"error": "Invalid Date"});
+      res.json({error: "Invalid Date"});
     }
   } else if (query.length === 13) {
     date = new Date(parseInt(query));
@@ -37,14 +38,14 @@ app.get('/api/:time', (req, res) => {
     match = query.match(reg)[0].length;
     if (match === 13) {
       res.json({
-        "unix": date.getTime(),
-        "utc": date.toUTCString()
+        unix: date.getTime(),
+        utc: date.toUTCString()
       });
     } else {
-      res.json({"error": "Invalid Date"})
+      res.json({error: "Invalid Date"})
     }
   } else {
-    res.json({"error": "Invalid Date"})
+    res.json({error: "Invalid Date"})
   }
 });
 
