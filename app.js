@@ -10,7 +10,6 @@ app.get('/', (req, res) => {
 
 app.get('/api/', (req, res) => {
   let date = new Date();
-
   res.json({
     unix: date.getTime(),
     utc: date.toUTCString()
@@ -18,7 +17,7 @@ app.get('/api/', (req, res) => {
 });
 
 app.get('/api/:date?', (req, res) => {
-  let query = req.params.time;
+  let query = req.params.date;
   let date;
 
   if (query.length === 10) {
