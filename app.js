@@ -8,6 +8,14 @@ app.get('/', (req, res) => {
   res.sendFile(absPath);
 });
 
+app.get('/api/', (req, res) => {
+  let date = new Date();
+  res.json({
+    "unix": date.getTime(),
+    "utc": date.toUTCString()
+  });
+});
+
 app.get('/api/:time', (req, res) => {
   let query = req.params.time;
   let date;
