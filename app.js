@@ -17,12 +17,12 @@ app.get('/api/', (req, res) => {
 });
 
 app.get('/api/:date?', (req, res) => {
-  let query = req.params.date;
+  let date_string = req.params.date;
   let date;
 
-  if (query.length === 10) {
-    date = new Date(query);
-    console.log(query, date);
+  if (date_string.length === 10) {
+    date = new Date(date_string);
+    console.log(date_string, date);
     if (date.toString()  !== 'Invalid Date') {
       res.json({
         unix: date.getTime(),
@@ -31,10 +31,10 @@ app.get('/api/:date?', (req, res) => {
     } else {
       res.json({error: "Invalid Date"});
     }
-  } else if (query.length === 13) {
-    date = new Date(parseInt(query));
+  } else if (date_string.length === 13) {
+    date = new Date(parseInt(date_string));
     reg = /\d+/;
-    match = query.match(reg)[0].length;
+    match = date_string.match(reg)[0].length;
     if (match === 13) {
       res.json({
         unix: date.getTime(),
