@@ -17,7 +17,7 @@ app.get('/api/', (req, res) => {
   });
 });
 
-app.get('/api/:time', (req, res) => {
+app.get('/api/:date?', (req, res) => {
   let query = req.params.time;
   let date;
 
