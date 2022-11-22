@@ -8,19 +8,21 @@ app.get('/', (req, res) => {
   res.sendFile(absPath);
 });
 
-app.get('/api/', (req, res) => {
-  let date = new Date();
-  res.json({
-    unix: date.getTime(),
-    utc: date.toUTCString()
-  });
-});
+// app.get('/api/', (req, res) => {
+//   console.log(req.params)
+// });
 
 app.get('/api/:date?', (req, res) => {
   let date_string = req.params.date;
   let date;
 
-  if (date_string.length === 10) {
+  if (date_string.length === 0) {
+    let date = new Date();
+    res.json({
+      unix: date.getTime(),
+      utc: date.toUTCString()
+    });
+  } else if (date_string.length === 10) {
     date = new Date(date_string);
     console.log(date_string, date);
     if (date.toString()  !== 'Invalid Date') {
