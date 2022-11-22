@@ -1,5 +1,6 @@
 let app = require('./app.js');
 
+let cors = require('cors');
 let express = require('express');
 
 let server = express();
@@ -7,8 +8,7 @@ let server = express();
 let port = process.env.PORT || 3000;
 
 
-var cors = require('cors');
-app.use(cors({optionsSuccessStatus: 200}));
+server.use(cors({optionsSuccessStatus: 200}));
 
 server.use('/', app)
 
