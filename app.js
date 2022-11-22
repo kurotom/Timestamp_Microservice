@@ -16,6 +16,8 @@ app.get('/api/:date?', (req, res) => {
   let date_string = req.params.date;
   let date;
 
+  console.log(date_string, date);
+
   if (date_string === undefined) {
     let date = new Date();
     res.json({
@@ -24,7 +26,6 @@ app.get('/api/:date?', (req, res) => {
     });
   } else if (date_string.length === 10) {
     date = new Date(date_string);
-    console.log(date_string, date);
     if (date.toString()  !== 'Invalid Date') {
       res.json({
         unix: date.getTime(),
