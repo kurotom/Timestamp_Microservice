@@ -6,6 +6,10 @@ let server = express();
 
 let port = process.env.PORT || 3000;
 
+
+var cors = require('cors');
+app.use(cors({optionsSuccessStatus: 200}));
+
 server.use('/', app)
 
 server.listen(port, (error) => {
