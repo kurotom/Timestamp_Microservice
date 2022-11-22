@@ -47,7 +47,16 @@ app.get('/api/:date?', (req, res) => {
       res.json({error: "Invalid Date"})
     }
   } else {
-    res.json({error: "Invalid Date"})
+    console.log('ACA')
+    date = new Date(date_string);
+    if (date.toString()  !== 'Invalid Date') {
+      res.json({
+        unix: date.getTime(),
+        utc: date.toUTCString()
+      });
+    } else {
+      res.json({error: "Invalid Date"});
+    }
   }
 });
 
